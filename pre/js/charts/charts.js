@@ -25,7 +25,7 @@ export function initChart(iframe) {
         if (error) throw error;
 
         //Declaramos fuera las variables genéricas
-        let margin = {top: 20, right: 20, bottom: 20, left: 55},
+        let margin = {top: 20, right: 20, bottom: 20, left: 85},
             width = document.getElementById('chart').clientWidth - margin.left - margin.right,
             height = document.getElementById('chart').clientHeight - margin.top - margin.bottom;
 
@@ -72,8 +72,6 @@ export function initChart(iframe) {
             .keys(gruposGasto)
             (data);
 
-        console.log(stackedDataGasto);
-
         function init() {
             svg.append("g")
                 .attr('class','chart-g')
@@ -81,16 +79,32 @@ export function initChart(iframe) {
                 .data(stackedDataGasto)
                 .enter()
                 .append("g")
-                .attr("fill", function(d) { return color(d.data.name); })
+                .attr("fill", function(d) { return color(d.key); })
+                .selectAll("rect")
+                .data(function(d) { return d; })
+                .enter()
                 .append("rect")
-                    .attr("y", function(d) { return y(d.data.edad_sustentador); })
-                    .attr("x", function(d) { return x(d[0]); })
-                    .attr("width", function(d) { return x(d[1]) - x(d[0]); })
-                    .attr("height", '60px');
+                .attr('class','prueba')
+                .attr("y", function(d) { return y(d.data.grupo) + y.bandwidth() / 4; })
+                .attr("x", function(d) { return 0; })
+                .attr("width", function(d) { return x(0); })
+                .attr("height", y.bandwidth() / 2)
+                .transition()
+                .duration(2000)
+                .attr("x", function(d) { return x(d[0]); })
+                .attr("width", function(d) { return x(d[1]) - x(d[0]); });
         }
 
         function animateChart() {
-
+            svg.selectAll('.prueba')
+                .attr("y", function(d) { return y(d.data.grupo) + y.bandwidth() / 4; })
+                .attr("x", function(d) { return 0; })
+                .attr("width", function(d) { return x(0); })
+                .attr("height", y.bandwidth() / 2)
+                .transition()
+                .duration(2000)
+                .attr("x", function(d) { return x(d[0]); })
+                .attr("width", function(d) { return x(d[1]) - x(d[0]); });
         }
 
         //////
