@@ -36,7 +36,7 @@ export function initChart(iframe) {
             .append("g")
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         
-        let gruposGasto = ['Alimentación','Vestido', 'Vivienda', 'Sanidad', 'Ocio y cultura', 'Resto'];
+        let gruposGasto = ['Alimentacion','Vestido', 'Vivienda', 'Sanidad', 'Ocio y cultura', 'Resto'];
 
         //Ejes X
         let x = d3.scaleLinear()
@@ -51,12 +51,18 @@ export function initChart(iframe) {
 
         //Eje Y
         let y = d3.scaleBand()
-            .domain(['total','65+'])
+            .domain(['total','mas65'])
             .range([0, height]);
+        
+        let tickLabels = ['Total', '65 y más años'];
+
+        let yAxis = function(g) {
+            g.call(d3.axisLeft(y).tickFormat((d,i) => tickLabels[i]))
+        }
         
         svg.append("g")
             .attr("class", "yaxis")
-            .call(d3.axisLeft(y));
+            .call(yAxis);
 
         let color = d3.scaleOrdinal()
             .domain(gruposGasto)
@@ -64,10 +70,9 @@ export function initChart(iframe) {
 
         let stackedDataGasto = d3.stack()
             .keys(gruposGasto)
-            .value((obj, key) => obj.edad_sustentador[key])
+            (data);
 
-        var stack = stackedDataGasto(data);
-        console.log(stack);
+        console.log(stackedDataGasto);
 
         function init() {
             svg.append("g")
