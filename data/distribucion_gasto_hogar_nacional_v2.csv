@@ -1,13 +1,7 @@
-grupo_gasto,id_gasto,edad_sustentador,total
-Alimentación,01,65 y más,17.99
-Vestido,03,65 y más,2.49
-Vivienda,04_05,65 y más,48.96
-Sanidad,06,65 y más,4.34
-Ocio y cultura,02_09_11,65 y más,8.22
-Resto,07_08_10_12,65 y más,18
-Alimentación,01,Total,16.96
-Vestido,03,Total,3.74
-Vivienda,04_05,Total,39.98
-Sanidad,06,Total,3.71
-Ocio y cultura,02_09_11,Total,12.55
-Resto,07_08_10_12,Total,23.06
+grupo_gasto,65+,Total
+Alimentación,17.99,16.96
+Vestido,2.49,3.74
+Vivienda,48.96,39.98
+Sanidad,4.34,3.71
+Ocio y cultura,8.22,12.55
+Resto,18,23.06

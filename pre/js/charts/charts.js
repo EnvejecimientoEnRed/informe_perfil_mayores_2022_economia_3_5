@@ -24,10 +24,8 @@ export function initChart(iframe) {
     d3.csv('https://raw.githubusercontent.com/CarlosMunozDiazCSIC/informe_perfil_mayores_2022_economia_3_6/main/data/distribucion_gasto_hogar_nacional_v2.csv', function(error,data) {
         if (error) throw error;
 
-        console.log(data);
-
         //Declaramos fuera las variables genéricas
-        let margin = {top: 20, right: 20, bottom: 20, left: 35},
+        let margin = {top: 20, right: 20, bottom: 20, left: 55},
             width = document.getElementById('chart').clientWidth - margin.left - margin.right,
             height = document.getElementById('chart').clientHeight - margin.top - margin.bottom;
 
@@ -53,19 +51,23 @@ export function initChart(iframe) {
 
         //Eje Y
         let y = d3.scaleBand()
-            .domain(['Total','65 y más'])
-            .range([ height, 0]);
+            .domain(['total','65+'])
+            .range([0, height]);
         
-        svg.append('g')
-            .call(d3.axisLeft('y'));
+        svg.append("g")
+            .attr("class", "yaxis")
+            .call(d3.axisLeft(y));
 
         let color = d3.scaleOrdinal()
-            .domain(gruposEdad)
+            .domain(gruposGasto)
             .range([COLOR_PRIMARY_1, COLOR_COMP_2, COLOR_COMP_1, COLOR_GREY_1, COLOR_OTHER_1, COLOR_OTHER_2]);
 
         let stackedDataGasto = d3.stack()
             .keys(gruposGasto)
-            (data);
+            .value((obj, key) => obj.edad_sustentador[key])
+
+        var stack = stackedDataGasto(data);
+        console.log(stack);
 
         function init() {
             svg.append("g")
