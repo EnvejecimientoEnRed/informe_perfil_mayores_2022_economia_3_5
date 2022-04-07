@@ -21,7 +21,7 @@ COLOR_OTHER_2 = '#731854';
 
 export function initChart(iframe) {
     //Lectura de datos
-    d3.csv('https://raw.githubusercontent.com/CarlosMunozDiazCSIC/informe_perfil_mayores_2022_economia_3_6/main/data/distribucion_gasto_hogar_nacional_v2.csv', function(error,data) {
+    d3.csv('https://raw.githubusercontent.com/CarlosMunozDiazCSIC/informe_perfil_mayores_2022_economia_3_5/main/data/distribucion_gasto_hogar_nacional_v2.csv', function(error,data) {
         if (error) throw error;
 
         //Declaramos fuera las variables genéricas
@@ -122,7 +122,7 @@ export function initChart(iframe) {
         //////
 
         //Iframe
-        setFixedIframeUrl('informe_perfil_mayores_2022_economia_3_6','distribucion_gasto_hogar');
+        setFixedIframeUrl('informe_perfil_mayores_2022_economia_3_5','distribucion_gasto_hogar');
 
         //Redes sociales > Antes tenemos que indicar cuál sería el texto a enviar
         setRRSSLinks('distribucion_gasto_hogar');
