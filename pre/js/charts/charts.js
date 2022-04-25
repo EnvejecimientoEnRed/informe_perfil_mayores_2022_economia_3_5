@@ -14,6 +14,7 @@ COLOR_COMP_2 = '#AADCE0',
 COLOR_ANAG_PRIM_1 = '#BA9D5F', 
 COLOR_ANAG_PRIM_2 = '#9E6C51',
 COLOR_ANAG_COMP_1 = '#1C5A5E';
+let tooltip = d3.select('#tooltip');
 
 //Diccionario
 let dictionary = {
@@ -125,10 +126,9 @@ export function initChart(iframe) {
                         this.style.opacity = '1';
                     });
 
-                    //Texto
-                    console.log(d);                    
+                    //Texto                  
                     let html = '<p class="chart__tooltip--title">' + dictionary[current] + '</p>' + 
-                        '<p class="chart__tooltip--text">Para este grupo de gasto, el gasto medio representa el x% <b>' + numberWithCommas3(parseFloat(data[1][current]).toFixed(2)) + '%</b> del total en este grupo de población</p>';
+                        '<p class="chart__tooltip--text">Para este grupo de gasto, el gasto medio representa el <b>' + numberWithCommas3(parseFloat(data[1][current]).toFixed(2)) + '%</b> del total en este grupo de población</p>';
             
                     tooltip.html(html);
 
