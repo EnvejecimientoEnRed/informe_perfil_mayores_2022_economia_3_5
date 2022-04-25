@@ -92,7 +92,8 @@ button {
         &__legend {
             display: flex;
             flex-wrap: wrap;
-            
+
+            width: calc(100% - 141px);            
 
             &--item {
                 position: relative;
@@ -135,36 +136,40 @@ button {
 
         //Visualización
         &__viz {
-            height: 180px;
-            margin-top: 8px;
+            height: auto;
+            margin-top: 8px;          
 
-            & .tick text {
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 300;
-                font-size: 12px;
-                line-height: 10px;
-            
-                color: #A3A3A3;
-            }
+            .chart--viz {
+                height: 200px;                
 
-            .domain {
-                stroke: #262626;
-                stroke-width: 1px;
-            }
-            
-            & .tick line {
-                stroke: #262626;
-                opacity: 0.7;
-                stroke-dasharray: 5;
-                stroke-width: 0.5px;
-            }
-            
-            & .line-special {
-                stroke: #000 !important;
-                stroke-dasharray: 0 !important;
-                stroke-width: 1px !important;
-            }
+                & .tick text {
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 10px;
+                
+                    color: #A3A3A3;
+                }
+
+                .domain {
+                    stroke: #262626;
+                    stroke-width: 1px;
+                }
+                
+                & .tick line {
+                    stroke: #262626;
+                    opacity: 0.7;
+                    stroke-dasharray: 5;
+                    stroke-width: 0.5px;
+                }
+                
+                & .line-special {
+                    stroke: #000 !important;
+                    stroke-dasharray: 0 !important;
+                    stroke-width: 1px !important;
+                }
+            }            
         }
 
         //Pie
@@ -261,6 +266,7 @@ button {
     }
 
     &__animate {
+        width: 141px;
         height: 32px;
         border: 1.2px solid #E37A42;
         
@@ -310,6 +316,23 @@ button {
         & + .text__header {
             margin-top: 24px;
         }
+    }
+
+    &__yaxis {
+        font-size: 0.8em;
+        line-height: 1.25em;
+        font-weight: 400;
+        color: #262626;
+    }
+
+    &__xaxis {
+        font-size: 0.8em;
+        line-height: 1.25em;
+        font-weight: 400;
+        color: #262626;
+        text-align: center;
+
+        margin-left: 45px;
     }
 }
 
