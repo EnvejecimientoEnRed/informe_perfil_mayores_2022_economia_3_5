@@ -32,7 +32,7 @@ export function initChart() {
         if (error) throw error;
 
         //Declaramos fuera las variables genéricas
-        let margin = {top: 10, right: 10, bottom: 20, left: 65},
+        let margin = {top: 12.5, right: 10, bottom: 25, left: 65},
             width = document.getElementById('chart').clientWidth - margin.left - margin.right,
             height = document.getElementById('chart').clientHeight - margin.top - margin.bottom;
 
