@@ -126,9 +126,11 @@ export function initChart() {
                         this.style.opacity = '1';
                     });
 
+                    console.log(d, current);
+
                     //Texto                  
                     let html = '<p class="chart__tooltip--title">' + dictionary[current] + '</p>' + 
-                        '<p class="chart__tooltip--text">Para este grupo de gasto, el gasto medio representa el <b>' + numberWithCommas3(parseFloat(data[1][current]).toFixed(2)) + '%</b> del total en este grupo de población</p>';
+                        '<p class="chart__tooltip--text">Para este grupo de gasto, el gasto medio representa el <b>' + numberWithCommas3(parseFloat(d.data[current]).toFixed(2)) + '%</b> del total en este grupo de población</p>';
             
                     tooltip.html(html);
 
